@@ -34,7 +34,7 @@ app.use('/books', booksRouter);
 })();
 
 app.use((req, res, next) => {
-    const err = new Error('not Found');
+    const err = new Error('Not Found');
     err.status = 404;
     next(err);
 });

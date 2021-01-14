@@ -43,7 +43,9 @@ router.get('/:id', asyncHandler(async(req, res) => {
     if (book) {
         res.render('books/edit', { book, title: 'Update Book' });
     } else {
-        res.sendStatus(404);
+        const err = new Error('Not Found');
+        err.status = 404;
+        throw err;
     }
 }));
 
@@ -74,7 +76,9 @@ router.post('/:id/delete', asyncHandler(async(req, res) => {
         await book.destroy();
         res.redirect("/");
     } else {
-        res.sendStatus(404);
+        const err = new Error('Not Found');
+        err.status = 404;
+        throw err;
     }
 }));
 
